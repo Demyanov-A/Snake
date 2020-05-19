@@ -6,26 +6,17 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class VarticalLine
+    class VarticalLine : Figure
     {
-        List<Point> pListVert;
-
-        public VarticalLine(int yTop, int yBottom, int x, char syml)
+        public VarticalLine(int x, int yTop, int yBottom, char syml)
         {
-            pListVert = new List<Point>();
+            pList = new List<Point>();
             for(int y = yTop; y <= yBottom; y++)
             {
                 Point p = new Point(x, y, syml);
-                pListVert.Add(p);
+                pList.Add(p);
             }
         }
 
-        public void Drow()
-        {
-            foreach(Point p in pListVert)
-            {
-                p.Draw();
-            }
-        }
     }
 }
