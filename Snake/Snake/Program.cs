@@ -42,7 +42,7 @@ namespace Snake
                     snake.Move();
                 }
 
-                Thread.Sleep(150);
+                Thread.Sleep(300);
 
                 if (Console.KeyAvailable)
                 {
