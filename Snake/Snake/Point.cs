@@ -62,5 +62,10 @@ namespace Snake
             syml = ' ';
             Draw();
         }
+
+        internal bool IsMit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
+        }
     }
 }
