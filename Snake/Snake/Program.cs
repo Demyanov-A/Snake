@@ -11,20 +11,15 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            //Отрисовка границ игрового поля
-            HorizontalLine UpLine = new HorizontalLine(0, 79, 0, '#');
-            UpLine.Drow();
-            VarticalLine LeftLine = new VarticalLine(0, 0, 24, '#');
-            LeftLine.Drow();
-            HorizontalLine DownLine = new HorizontalLine(0, 79, 24, '#');
-            DownLine.Drow();
-            VarticalLine RightLine = new VarticalLine(79, 0, 24, '#');
-            RightLine.Drow();
+            Console.SetBufferSize(80, 25);
 
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
+                        
             //Отрисовка точек
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
-            snake.Drow();
+            snake.Draw();
 
             FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
@@ -32,6 +27,13 @@ namespace Snake
 
             while (true)
             {
+                while (true)
+                {
+                    if (walls.IsMit(snake) || snake.IsMitTail())
+                    {
+                        break;
+                    }
+                }
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
